@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { LoadingScreen } from "../components/LoadingScreen";
+import { Navigation } from "../components/Navigation";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Hero } from "../components/Hero";
 import { Skills } from "../components/Skills";
@@ -20,20 +21,31 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       <ThemeToggle />
       
       <main>
-        <Hero />
+        <section id="home">
+          <Hero />
+        </section>
         <TechCarousel />
-        <Skills />
-        <Projects />
-        <Achievements />
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="achievements">
+          <Achievements />
+        </section>
         <Languages />
         <CurrentFocus />
         <Testimonials />
       </main>
       
-      <Footer />
+      <section id="contact">
+        <Footer />
+      </section>
     </div>
   );
 };

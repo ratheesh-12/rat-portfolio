@@ -12,12 +12,6 @@ const languages = [
     flag: "🇬🇧",
     level: "Fluent",
     proficiency: 95
-  },
-  {
-    name: "Hindi",
-    flag: "🇮🇳",
-    level: "Conversational",
-    proficiency: 75
   }
 ];
 
