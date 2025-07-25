@@ -1,6 +1,7 @@
-import { ArrowDown, Download, ExternalLink } from "lucide-react";
+import { ArrowDown, Download, ExternalLink, Twitter, Github, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
 import profilePicture from "../assets/profile-picture.jpg";
+import { FaWhatsapp, FaTelegramPlane } from "react-icons/fa";
 
 export const Hero = () => {
   const scrollToProjects = () => {
@@ -23,7 +24,7 @@ export const Hero = () => {
             <div className="relative inline-block">
               <img
                 src={profilePicture}
-                alt="Rathii's Profile"
+                alt="Ratheesh's Profile"
                 className="w-40 h-40 rounded-full border-4 border-white/20 shadow-glow mx-auto object-cover"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent via-transparent to-white/10"></div>
@@ -62,17 +63,30 @@ export const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300 hover:scale-105"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground border-primary backdrop-blur-sm transition-all duration-300 hover:scale-105"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </Button>
             </div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ArrowDown className="h-6 w-6 text-white/60" />
+            {/* Social Icons Row */}
+            <div className="flex justify-center gap-4 mt-6 animate-fade-in [animation-delay:0.6s]">
+              <a href="https://github.com/ratheesh-12" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-white hover:text-primary text-2xl transition-colors">
+                <Github className="w-7 h-7" />
+              </a>
+              <a href="https://wa.me/918098501226/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-white hover:text-green-500 text-2xl transition-colors">
+                <FaWhatsapp className="w-7 h-7" />
+              </a>
+              <a href="https://t.me/+918098501226" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="text-white hover:text-blue-400 text-2xl transition-colors">
+                <FaTelegramPlane className="w-7 h-7" />
+              </a>
+              <a href="https://x.com/ratheesh1226/" target="_blank" rel="noopener noreferrer" aria-label="X" className="text-white hover:text-black text-2xl transition-colors">
+                <Twitter className="w-7 h-7" />
+              </a>
+              <a href="https://www.linkedin.com/in/ratheeshsekar12/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-white hover:text-blue-600 text-2xl transition-colors">
+                <Linkedin className="w-7 h-7" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

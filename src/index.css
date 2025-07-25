@@ -89,7 +89,7 @@ All colors MUST be HSL.
     --ring: 213 94% 68%;
 
     /* Dark Mode Custom Colors */
-    --hero-gradient: linear-gradient(135deg, hsl(213 94% 68%), hsl(186 100% 69%));
+    --hero-gradient: linear-gradient(135deg, hsl(215 28% 9%), hsl(213 94% 68%));
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
     --shadow-glow: 0 20px 40px -12px hsl(213 94% 68% / 0.3);
@@ -105,4 +105,8 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+html, body {
+  transition: background 0.5s, color 0.5s;
 }

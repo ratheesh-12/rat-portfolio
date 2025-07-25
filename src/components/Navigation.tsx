@@ -53,7 +53,7 @@ export const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
               >
                 {item.name}
               </button>
@@ -79,7 +79,7 @@ export const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-4 py-2 text-muted-foreground hover:text-primary hover:bg-accent/10 rounded-lg transition-colors duration-200"
+                  className="block w-full text-left px-4 py-2 text-foreground hover:text-primary hover:bg-accent/10 rounded-lg transition-colors duration-200"
                 >
                   {item.name}
                 </button>

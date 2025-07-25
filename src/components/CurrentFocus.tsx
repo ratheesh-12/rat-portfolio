@@ -1,32 +1,60 @@
-import { BookOpen, Code, Shield, Zap } from "lucide-react";
+import { BookOpen, Code, Shield, Zap, Database } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 
 const currentFocus = [
   {
-    title: "Advanced Cybersecurity",
-    description: "Deep diving into ethical hacking, penetration testing, and security architecture",
-    icon: Shield,
+    title: "Database Systems & SQL Mastery",
+    description: "Mastering relational databases, advanced SQL queries, and performance tuning",
+    icon: Database, // Replace with appropriate icon if needed
     status: "In Progress",
-    progress: 75,
-    timeframe: "3 months",
-    details: ["OSCP Certification Prep", "Advanced Penetration Testing", "Security Architecture Design"]
-  },
+    progress: 55, // or your real progress
+    timeframe: "4 months",
+    details: [
+      "Advanced SQL Querying (Joins, Subqueries, CTEs)",
+      "MySQL & PostgreSQL Performance Tuning",
+      "Schema Design & Normalization",
+      "Database Security Best Practices"
+    ]
+  },  
   {
     title: "React + TypeScript Mastery",
     description: "Building scalable applications with modern React patterns and TypeScript",
     icon: Code,
-    status: "Active",
-    progress: 85,
-    timeframe: "2 months",
+    status: "In Progress",
+    progress: 50,
+    timeframe: "5 months",
     details: ["Advanced TypeScript Patterns", "React Performance Optimization", "State Management with Zustand"]
   },
+  {
+    title: "Advanced Cybersecurity",
+    description: "Deep diving into ethical hacking, penetration testing, and security architecture",
+    icon: Shield,
+    status: "In Progress",
+    progress: 30,
+    timeframe: "6 months",
+    details: ["OSCP Certification Prep", "Advanced Penetration Testing", "Security Architecture Design"]
+  },
+  {
+    title: "Java DSA Mastery",
+    description: "Mastering core data structures and algorithms using Java with competitive coding practices",
+    icon: Code,
+    status: "In Progress",
+    progress: 20, // Set your actual progress here
+    timeframe: "5 months",
+    details: [
+      "Tree, BST, and Graph Algorithms",
+      "Sorting, Searching, and Sliding Window Problems",
+      "Time & Space Complexity Analysis (Big O Notation)",
+      "Solving LeetCode, GFG, and HackerRank problems in Java"
+    ]
+  },  
   {
     title: "Cloud Architecture (AWS)",
     description: "Learning cloud-native development and deployment strategies",
     icon: Zap,
     status: "Starting Soon",
-    progress: 30,
+    progress: 0,
     timeframe: "4 months",
     details: ["AWS Solutions Architect", "Serverless Applications", "Microservices Architecture"]
   },
@@ -35,7 +63,7 @@ const currentFocus = [
     description: "Applying ML techniques to cybersecurity and web applications",
     icon: BookOpen,
     status: "Research Phase",
-    progress: 20,
+    progress: 0,
     timeframe: "6 months",
     details: ["MLOps Pipelines", "Security ML Models", "Real-time Threat Detection"]
   }

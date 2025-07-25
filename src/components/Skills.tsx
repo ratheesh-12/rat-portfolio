@@ -17,7 +17,7 @@ const skillCategories = [
   {
     title: "Database",
     icon: Database,
-    skills: ["MySQL", "PostgreSQL", "MongoDB", "Redis"],
+    skills: ["MySQL", "PostgreSQL", "MongoDB"],
     color: "bg-purple-500/10 text-purple-600 border-purple-200 dark:bg-purple-500/20 dark:text-purple-400 dark:border-purple-800"
   },
   {

@@ -1,141 +1,93 @@
-import { ExternalLink, Github, Star } from "lucide-react";
-import { Button } from "./ui/button";
+import { useEffect, useState } from "react";
+import { ExternalLink, Github, Star, Archive, GitBranch } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 
-const projects = [
-  {
-    title: "SecureChat App",
-    description: "End-to-end encrypted messaging application with real-time communication and advanced security features.",
-    tech: ["React", "Node.js", "Socket.io", "Cryptography", "PostgreSQL"],
-    github: "https://github.com/rathii/securechat",
-    live: "https://securechat-demo.vercel.app",
-    featured: true,
-    image: "🔐"
-  },
-  {
-    title: "Portfolio Tracker",
-    description: "Full-stack investment portfolio tracker with real-time stock prices and analytics dashboard.",
-    tech: ["React", "TypeScript", "Python", "FastAPI", "MySQL"],
-    github: "https://github.com/rathii/portfolio-tracker",
-    live: "https://portfolio-tracker-demo.com",
-    featured: true,
-    image: "📈"
-  },
-  {
-    title: "Vulnerability Scanner",
-    description: "Automated web application security scanner for common vulnerabilities (OWASP Top 10).",
-    tech: ["Python", "Selenium", "SQLAlchemy", "Flask", "Docker"],
-    github: "https://github.com/rathii/vuln-scanner",
-    featured: false,
-    image: "🛡️"
-  },
-  {
-    title: "Task Management API",
-    description: "RESTful API for task management with JWT authentication and role-based access control.",
-    tech: ["Java", "Spring Boot", "PostgreSQL", "Redis", "JWT"],
-    github: "https://github.com/rathii/task-api",
-    featured: false,
-    image: "📋"
-  },
-  {
-    title: "E-Commerce Platform",
-    description: "Modern e-commerce platform with payment integration and admin dashboard.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe", "AWS"],
-    github: "https://github.com/rathii/ecommerce",
-    live: "https://ecommerce-demo.netlify.app",
-    featured: true,
-    image: "🛒"
-  },
-  {
-    title: "Machine Learning Predictor",
-    description: "Stock price prediction model using LSTM neural networks and real-time data analysis.",
-    tech: ["Python", "TensorFlow", "Pandas", "Flask", "Chart.js"],
-    github: "https://github.com/rathii/ml-predictor",
-    featured: false,
-    image: "🤖"
-  }
-];
+interface Repo {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string;
+  language: string;
+  stargazers_count: number;
+  archived: boolean;
+  fork: boolean;
+  private: boolean;
+}
 
-export const Projects = () => {
+export function Projects() {
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/ratheesh-12/repos?sort=updated")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch repositories");
+        return res.json();
+      })
+      .then((data) => {
+        setRepos(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div className="text-center py-12 text-lg">Loading GitHub projects...</div>;
+  }
+  if (error) {
+    return <div className="text-center py-12 text-red-500">{error}</div>;
+  }
+
   return (
-    <section id="projects" className="py-20 bg-muted/30">
+    <section className="py-20 bg-background" id="projects">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-hero-gradient bg-clip-text text-transparent">
-            Featured Projects
+            My GitHub Projects
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills in full-stack development and cybersecurity
+            A showcase of my public repositories, fetched live from my GitHub profile.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <Card
-              key={project.title}
-              className={`group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-fade-in ${
-                project.featured ? "border-primary/50 shadow-glow" : ""
-              }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+          {repos.map((repo) => (
+            <Card key={repo.id} className="group hover:shadow-glow transition-all duration-300 hover:-translate-y-2 animate-fade-in">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <div className="text-4xl">{project.image}</div>
-                  {project.featured && (
-                    <Badge className="bg-primary text-primary-foreground">
-                      <Star className="w-3 h-3 mr-1" />
-                      Featured
-                    </Badge>
-                  )}
+                  <div className="flex items-center gap-2">
+                    <Github className="w-5 h-5 text-primary" />
+                    <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="font-bold text-lg group-hover:text-primary transition-colors">
+                      {repo.name}
+                    </a>
+                  </div>
+                  <div className="flex gap-2">
+                    {repo.archived && <Badge className="bg-gray-500 text-white flex items-center"><Archive className="w-3 h-3 mr-1" />Archived</Badge>}
+                    {repo.fork && <Badge className="bg-yellow-500 text-white flex items-center"><GitBranch className="w-3 h-3 mr-1" />Fork</Badge>}
+                  </div>
                 </div>
                 <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">
-                  {project.title}
+                  {repo.language && <span className="text-sm text-muted-foreground mr-2">{repo.language}</span>}
                 </CardTitle>
                 <CardDescription className="text-muted-foreground">
-                  {project.description}
+                  {repo.description || "No description provided."}
                 </CardDescription>
               </CardHeader>
-
               <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <Badge
-                      key={tech}
-                      variant="secondary"
-                      className="text-xs hover:scale-105 transition-transform"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
+                <div className="flex items-center gap-2">
+                  <Star className="w-4 h-4 text-yellow-400" />
+                  <span className="text-sm font-medium">{repo.stargazers_count}</span>
                 </div>
               </CardContent>
-
-              <CardFooter className="flex gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex-1 hover:bg-primary hover:text-primary-foreground transition-all"
-                  asChild
-                >
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
-                  </a>
-                </Button>
-                
-                {project.live && (
-                  <Button
-                    size="sm"
-                    className="flex-1 bg-primary hover:bg-primary/90 transition-all"
-                    asChild
-                  >
-                    <a href={project.live} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </a>
-                  </Button>
-                )}
+              <CardFooter>
+                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary hover:underline">
+                  <ExternalLink className="w-4 h-4" />
+                  View on GitHub
+                </a>
               </CardFooter>
             </Card>
           ))}
@@ -143,4 +95,4 @@ export const Projects = () => {
       </div>
     </section>
   );
-};
+}

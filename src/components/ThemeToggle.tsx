@@ -7,11 +7,21 @@ export const ThemeToggle = () => {
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
-    if (theme === "dark" || (!theme && systemTheme)) {
+    if (!theme) {
+      setIsDark(false);
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setTimeout(() => {
+        setIsDark(true);
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      }, 500);
+    } else if (theme === "dark") {
       setIsDark(true);
       document.documentElement.classList.add("dark");
+    } else {
+      setIsDark(false);
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 
@@ -33,7 +43,7 @@ export const ThemeToggle = () => {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className="fixed top-6 right-6 z-50 bg-glass backdrop-blur-glass border-[var(--glass-border)] hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+      className="fixed top-20 right-6 z-50 bg-glass backdrop-blur-glass border-[var(--glass-border)] hover:bg-primary hover:text-primary-foreground transition-all duration-300"
     >
       {isDark ? (
         <Sun className="h-4 w-4 transition-transform hover:rotate-12" />

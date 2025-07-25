@@ -11,6 +11,7 @@ import { CurrentFocus } from "../components/CurrentFocus";
 import { Testimonials } from "../components/Testimonials";
 import { TechCarousel } from "../components/TechCarousel";
 import { Footer } from "../components/Footer";
+import { Contact } from "../components/Contact";
 
 const Index = () => {
   const [showLoading, setShowLoading] = useState(true);
@@ -41,11 +42,11 @@ const Index = () => {
         <Languages />
         <CurrentFocus />
         <Testimonials />
+        <section id="contact">
+          <Contact />
+        </section>
       </main>
-      
-      <section id="contact">
-        <Footer />
-      </section>
+      <Footer />
     </div>
   );
 };
