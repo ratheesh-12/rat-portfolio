@@ -97,7 +97,7 @@ export const Footer = () => {
                 className="hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 asChild
               >
-                <a href="https://mailto:ratheeshsekar00@gmail.com">
+                <a href="mailto:ratheeshsekar00@gmail.com">
                   <Mail className="h-4 w-4 mr-2" />
                   Let's Connect
                 </a>
