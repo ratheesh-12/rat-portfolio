@@ -97,7 +97,7 @@ export const Footer = () => {
                 className="hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 asChild
               >
-                <a href="mailto:rathii.dev@gmail.com">
+                <a href="https://mailto:ratheeshsekar00@gmail.com">
                   <Mail className="h-4 w-4 mr-2" />
                   Let's Connect
                 </a>
@@ -109,14 +109,13 @@ export const Footer = () => {
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center text-sm text-muted-foreground mb-4 md:mb-0">
-            <span>Built with</span>
+            <span>Built by Ratheesh Sekar</span>
             <Heart className="h-4 w-4 mx-1 text-red-500 fill-current animate-pulse" />
-            <span>by Rathii💙</span>
           </div>
           
           <div className="flex items-center space-x-4">
             <p className="text-sm text-muted-foreground">
-              © 2024 Rathii. All rights reserved.
+              © 2024 Ratheesh Sekar. All rights reserved.
             </p>
             <Button
               variant="ghost"

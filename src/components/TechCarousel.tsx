@@ -10,7 +10,7 @@ const techStack = [
   { name: "MySQL", icon: "🐬" },
   { name: "PostgreSQL", icon: "🐘" },
   { name: "MongoDB", icon: "🍃" },
-  { name: "AWS", icon: "☁️" },
+  //{ name: "AWS", icon: "☁️" },
   { name: "Docker", icon: "🐳" },
   { name: "Git", icon: "🌳" },
   { name: "Linux", icon: "🐧" },
@@ -23,7 +23,7 @@ export const TechCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % techStack.length);
-    }, 2000);
+    }, 1000); // Reduced from 2000ms to 1000ms for faster rotation
 
     return () => clearInterval(interval);
   }, []);
@@ -47,12 +47,12 @@ export const TechCarousel = () => {
 
         {/* Desktop View - Scrolling Banner */}
         <div className="hidden md:block">
-          <div className="flex animate-gradient-x">
+          <div className="flex animate-gradient-x" style={{ animationDuration: '20s' }}>
             {[...techStack, ...techStack].map((tech, index) => (
               <div
                 key={`${tech.name}-${index}`}
                 className="flex items-center bg-card rounded-lg p-3 mx-2 shadow-soft min-w-[120px] flex-shrink-0 animate-float"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${index * 0.05}s`, animationDuration: '2s' }}
               >
                 <div className="text-2xl mr-3">{tech.icon}</div>
                 <div className="text-sm font-medium text-card-foreground">
