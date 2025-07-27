@@ -41,8 +41,8 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold bg-hero-gradient bg-clip-text text-transparent mb-4">
-              Rathii
+            <h3 className="text-2xl font-bold text-primary mb-4">
+              Ratheesh Sekar
             </h3>
             <p className="text-muted-foreground mb-6 max-w-md">
               Full-Stack Developer & Cybersecurity Enthusiast building secure, 
@@ -97,7 +97,7 @@ export const Footer = () => {
                 className="hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 asChild
               >
-                <a href="mailto:ratheeshsekar00@gmail.com">
+                <a href="mailto:ratheeshsekar00@gmail.com" target="_blank">
                   <Mail className="h-4 w-4 mr-2" />
                   Let's Connect
                 </a>
