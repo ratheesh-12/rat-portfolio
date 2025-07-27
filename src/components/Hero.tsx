@@ -64,6 +64,13 @@ export const Hero = () => {
                 variant="outline"
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground border-primary backdrop-blur-sm transition-all duration-300 hover:scale-105"
+                onClick={() => {
+                  // Create a downloadable resume
+                  const link = document.createElement('a');
+                  link.href = '/placeholder.svg'; // Replace with actual resume PDF path
+                  link.download = 'Ratheesh_Sekar_Resume.pdf';
+                  link.click();
+                }}
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume

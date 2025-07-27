@@ -3,8 +3,11 @@ import { LoadingScreen } from "../components/LoadingScreen";
 import { Navigation } from "../components/Navigation";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Hero } from "../components/Hero";
+import { About } from "../components/About";
 import { Skills } from "../components/Skills";
 import { Projects } from "../components/Projects";
+import { ProjectsShowcase } from "../components/ProjectsShowcase";
+import { Experience } from "../components/Experience";
 import { Achievements } from "../components/Achievements";
 import { Languages } from "../components/Languages";
 import { CurrentFocus } from "../components/CurrentFocus";
@@ -12,6 +15,9 @@ import { Testimonials } from "../components/Testimonials";
 import { TechCarousel } from "../components/TechCarousel";
 import { Footer } from "../components/Footer";
 import { Contact } from "../components/Contact";
+import { ParticleBackground } from "../components/ParticleBackground";
+import { ScrollToTop } from "../components/ScrollToTop";
+import { Chatbot } from "../components/Chatbot";
 
 const Index = () => {
   const [showLoading, setShowLoading] = useState(true);
@@ -21,20 +27,29 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <ParticleBackground />
       <Navigation />
       <ThemeToggle />
+      <ScrollToTop />
+      <Chatbot />
       
-      <main>
+      <main className="relative z-10">
         <section id="home">
           <Hero />
         </section>
         <TechCarousel />
+        <section id="about">
+          <About />
+        </section>
         <section id="skills">
           <Skills />
         </section>
+        <section id="experience">
+          <Experience />
+        </section>
         <section id="projects">
-          <Projects />
+          <ProjectsShowcase />
         </section>
         <section id="achievements">
           <Achievements />
